@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-import './ResultPage.scss';
+import './ResultPage.css';
 
 import { useWindowSize } from 'react-use'
 import Confetti from 'react-confetti'

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
-import './InputPage.scss';
+import './InputPage.css';
 
 const InputPage = () => {
   const history = useHistory();
