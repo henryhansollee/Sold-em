@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import './ResultPage.scss';
 
+import { useWindowSize } from 'react-use'
+import Confetti from 'react-confetti'
+
 const ResultPage = ({ match }) => {
+  const { width, height } = useWindowSize()
   const history = useHistory();
   const [ standardNums, setStandardNums ] = useState('');
   const [ suffledNums, setSuffledNums ] = useState('');
@@ -34,7 +38,13 @@ const ResultPage = ({ match }) => {
       <h2>기준: {standardNums}</h2>
       <h3>셔플: {suffledNums}</h3>
       {suffledNums &&
-        <button onClick={suffling}>다시</button>
+        <div>
+          <button onClick={suffling}>다시</button>
+          <Confetti
+            width={width}
+            height={height}
+          />
+        </div>
       }
       {!suffledNums &&
         <button onClick={suffling}>셔플</button>
