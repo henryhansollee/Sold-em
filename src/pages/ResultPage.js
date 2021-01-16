@@ -23,13 +23,6 @@ const ResultPage = ({ match }) => {
         setSuffledNums(standardNums)
       }
     } else {
-      setSuffledNums('')
-      console.log(suffledNums)
-      for (var a = 0; a < standardNums.length; a++) {
-        var b = Math.floor(Math.random() * (a + 1));
-        [standardNums[a], standardNums[b]] = [standardNums[b], standardNums[a]];
-        setSuffledNums(standardNums)
-      }
       history.go()
     }
   }
@@ -40,7 +33,12 @@ const ResultPage = ({ match }) => {
       <h2>{match.params.teamNums}</h2>
       <h2>기준: {standardNums}</h2>
       <h3>셔플: {suffledNums}</h3>
-      <button onClick={suffling}>셔플</button>
+      {suffledNums &&
+        <button onClick={suffling}>다시</button>
+      }
+      {!suffledNums &&
+        <button onClick={suffling}>셔플</button>
+      }
       <Link to="/">처음으로</Link>
     </div>
   );
