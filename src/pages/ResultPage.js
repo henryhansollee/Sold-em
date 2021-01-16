@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import './ResultPage.scss';
 
 const ResultPage = ({ match }) => {
+  const history = useHistory();
   const [ standardNums, setStandardNums ] = useState('');
   const [ suffledNums, setSuffledNums ] = useState('');
   const standard = [];
@@ -14,10 +16,21 @@ const ResultPage = ({ match }) => {
   }, [])
 
   const suffling = () => {
-    for (var i = 0; i < standardNums.length; i++) {
-      var j = Math.floor(Math.random() * (i + 1));
-      [standardNums[i], standardNums[j]] = [standardNums[j], standardNums[i]];
-      setSuffledNums(standardNums)
+    if (!suffledNums) {
+      for (var i = 0; i < standardNums.length; i++) {
+        var j = Math.floor(Math.random() * (i + 1));
+        [standardNums[i], standardNums[j]] = [standardNums[j], standardNums[i]];
+        setSuffledNums(standardNums)
+      }
+    } else {
+      setSuffledNums('')
+      console.log(suffledNums)
+      for (var a = 0; a < standardNums.length; a++) {
+        var b = Math.floor(Math.random() * (a + 1));
+        [standardNums[a], standardNums[b]] = [standardNums[b], standardNums[a]];
+        setSuffledNums(standardNums)
+      }
+      history.go()
     }
   }
 
