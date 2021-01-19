@@ -6,6 +6,12 @@ import './ResultPage.css';
 import { useWindowSize } from 'react-use'
 import Confetti from 'react-confetti'
 
+// FULLPAGE
+import ReactFullpage from '@fullpage/react-fullpage';
+
+import Button from 'react-bootstrap/Button'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const ResultPage = ({ match }) => {
   const { width, height } = useWindowSize()
   const history = useHistory();
@@ -32,25 +38,36 @@ const ResultPage = ({ match }) => {
   }
 
   return (
-    <div>
-      <h1>ResultPage</h1>
-      <h2>{match.params.teamNums}</h2>
-      <h2>기준: {standardNums}</h2>
-      <h3>셔플: {suffledNums}</h3>
-      {suffledNums &&
-        <div>
-          <button onClick={suffling}>다시</button>
-          <Confetti
-            width={width}
-            height={height}
-          />
-        </div>
-      }
-      {!suffledNums &&
-        <button onClick={suffling}>셔플</button>
-      }
-      <Link to="/">처음으로</Link>
-    </div>
+    <ReactFullpage
+      licenseKey = {'YOUR_KEY_HERE'}
+      scrollingSpeed = {1000}
+      render={({ state, fullpageApi }) => {
+        return (
+          <ReactFullpage.Wrapper>
+            <div className="section main-page">
+              <div>
+                <h2>총 {match.params.teamNums}팀</h2>
+                <h2>기준: {standardNums}</h2>
+                <h3>셔플: {suffledNums}</h3>
+                {suffledNums &&
+                  <div>
+                    <Button onClick={suffling} className="" variant="dark">다시</Button>
+                    <Confetti
+                      width={width}
+                      height={height}
+                    />
+                  </div>
+                }
+                {!suffledNums &&
+                  <Button onClick={suffling} className="" variant="dark">셔플</Button>
+                }
+                <Link className="btn btn-light" to="/">처음으로</Link>
+              </div>
+            </div>
+          </ReactFullpage.Wrapper>
+        );
+      }}
+    />
   );
 };
 
