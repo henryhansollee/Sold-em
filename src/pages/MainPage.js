@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { useHistory } from "react-router-dom";
+
 // ROUTER
 import { Link } from 'react-router-dom';
 
@@ -24,6 +26,15 @@ const MainPage = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const history = useHistory();
+  const [ teams, setTeams ] = useState('');
+  const setTeamsNums = e => {
+    setTeams(e.target.value)
+  };
+  const sendData = () => {
+    console.log(teams);
+    history.push(`/result/${teams}`)
+  };
   return (
     <ReactFullpage
       licenseKey = {'YOUR_KEY_HERE'}
@@ -42,14 +53,20 @@ const MainPage = () => {
               </div>
 
               <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
+                시작하기
               </Button>
 
               <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                   <Modal.Title>Modal heading</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                <Modal.Body>
+                  <div>
+                    <h1>InputPage</h1>
+                    <input placeholder="팀 수" teams={teams} onChange={setTeamsNums} />
+                    <button onClick={sendData}>결과보기</button>
+                  </div>
+                </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose}>
                     Close
@@ -59,7 +76,6 @@ const MainPage = () => {
                   </Button>
                 </Modal.Footer>
               </Modal>
-              <Link to="/input">시작하기</Link>
             </div>
           </ReactFullpage.Wrapper>
         );
