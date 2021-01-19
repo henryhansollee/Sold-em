@@ -1,9 +1,8 @@
+// REACT
 import React, { useState } from 'react';
 
+// HISTORY
 import { useHistory } from "react-router-dom";
-
-// ROUTER
-import { Link } from 'react-router-dom';
 
 // FULLPAGE
 import ReactFullpage from '@fullpage/react-fullpage';
@@ -15,18 +14,23 @@ import main3 from '../assets/images/main3.png'
 import main4 from '../assets/images/main4.png'
 import main5 from '../assets/images/main5.png'
 
+// BOOTSTRAP
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // CSS
 import './MainPage.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const MainPage = () => {
+  // MODAL
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // HISTORY
   const history = useHistory();
+
   const [ teams, setTeams ] = useState('');
   const setTeamsNums = e => {
     setTeams(e.target.value)
@@ -35,6 +39,7 @@ const MainPage = () => {
     console.log(teams);
     history.push(`/result/${teams}`)
   };
+
   return (
     <ReactFullpage
       licenseKey = {'YOUR_KEY_HERE'}
@@ -43,38 +48,29 @@ const MainPage = () => {
         return (
           <ReactFullpage.Wrapper>
             <div className="section main-page">
-              <h1 className="main-h1">Sold`em</h1>
-              <div>
-                <img src={main1} alt="main1" className="main-img" />
-                <img src={main2} alt="main2" className="main-img" />
-                <img src={main5} alt="main5" className="main-img" />
-                <img src={main4} alt="main4" className="main-img" />
-                <img src={main3} alt="main3" className="main-img" />
+              <div className="d-flex flex-column align-items-center">
+                
+                <div className="d-flex justify-content-center w-50">
+                  <img src={main1} alt="main1" className="main-img" />
+                  <img src={main2} alt="main2" className="main-img" />
+                  <img src={main5} alt="main5" className="main-img" />
+                  <img src={main4} alt="main4" className="main-img" />
+                  <img src={main3} alt="main3" className="main-img" />
+                </div>
+                <h1 className="main-h1">싸피솔덤</h1>
+                <Button className="mt-4" size="sm" variant="dark" onClick={handleShow}>
+                  시작하기
+                </Button>
               </div>
 
-              <Button variant="primary" onClick={handleShow}>
-                시작하기
-              </Button>
-
               <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
                 <Modal.Body>
                   <div>
-                    <h1>InputPage</h1>
+                    <h1>팀 수를 입력하세요!</h1>
                     <input placeholder="팀 수" teams={teams} onChange={setTeamsNums} />
                     <button onClick={sendData}>결과보기</button>
                   </div>
                 </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>
-                    Close
-                  </Button>
-                  <Button variant="primary" onClick={handleClose}>
-                    Save Changes
-                  </Button>
-                </Modal.Footer>
               </Modal>
             </div>
           </ReactFullpage.Wrapper>
