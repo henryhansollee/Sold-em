@@ -23,7 +23,7 @@ const ResultPage = ({ match }) => {
       standard.push(i)
     }
     setStandardNums(standard)
-  }, [])
+  }, [standard])
 
   const suffling = () => {
     if (!suffledNums) {
