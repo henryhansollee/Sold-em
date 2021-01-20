@@ -43,6 +43,11 @@ const ResultPage = ({ match }) => {
     }
   }
 
+  const initSuffledNums = () => {
+    setSuffledNums('')
+    history.go()
+  }
+
   return (
     <ReactFullpage
       licenseKey = {'YOUR_KEY_HERE'}
@@ -57,7 +62,7 @@ const ResultPage = ({ match }) => {
                 <h3>셔플: {suffledNums}</h3>
                 {suffledNums &&
                   <div>
-                    <Button onClick={suffling} className="" variant="dark">다시</Button>
+                    <Button onClick={initSuffledNums} className="" variant="dark">다시</Button>
                     <Confetti
                       width={width}
                       height={height}
