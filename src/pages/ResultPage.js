@@ -18,12 +18,17 @@ const ResultPage = ({ match }) => {
   const [ standardNums, setStandardNums ] = useState('');
   const [ suffledNums, setSuffledNums ] = useState('');
   const standard = [];
-  useEffect(() => {
+
+  const initialSetting = () => {
     for (var i = 1; i <= match.params.teamNums; i++) {
       standard.push(i)
     }
     setStandardNums(standard)
-  }, [standard])
+  }
+
+  useEffect(() => {
+    initialSetting();
+  }, [initialSetting]);
 
   const suffling = () => {
     if (!suffledNums) {
