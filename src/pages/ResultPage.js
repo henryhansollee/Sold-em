@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import './ResultPage.css';
@@ -17,14 +17,15 @@ const ResultPage = ({ match }) => {
   const history = useHistory();
   const [ standardNums, setStandardNums ] = useState('');
   const [ suffledNums, setSuffledNums ] = useState('');
-  const standard = [];
+  
 
-  const initialSetting = () => {
+  const initialSetting = useCallback(async () => {
+    const standard = [];
     for (var i = 1; i <= match.params.teamNums; i++) {
       standard.push(i)
     }
-    setStandardNums(standard)
-  }
+    setStandardNums(standard);
+  }, [match.params.teamNums])
 
   useEffect(() => {
     initialSetting();
