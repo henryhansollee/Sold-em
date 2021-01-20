@@ -39,13 +39,13 @@ const ResultPage = ({ match }) => {
         setSuffledNums(standardNums)
       }
     } else {
-      history.go()
+      history.push(`/result/${match.params.teamNums}`)
     }
   }
 
   const initSuffledNums = () => {
     setSuffledNums('')
-    history.go()
+    history.push(`/result/${match.params.teamNums}`)
   }
 
   return (
