@@ -35,7 +35,7 @@ const ResultPage = ({ match }) => {
   const [ suffledNums, setSuffledNums ] = useState('');
   
   const [ nums, setNums ] = useState('');
-  const [ loading, setLoading ] = useState(false);
+  const [ loading ] = useState(false);
 
   const initialSetting = useCallback(async () => {
     const standard = [];
