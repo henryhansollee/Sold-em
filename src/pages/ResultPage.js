@@ -21,6 +21,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './ResultPage.scss';
 import { ThemeProvider } from 'react-bootstrap';
 
+import cardImg from '../assets/images/card.jpg'
+
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 
 const ResultPage = ({ match }) => {
@@ -159,14 +161,14 @@ const ResultPage = ({ match }) => {
                 <div className="d-flex">
                   {nums.map(num => 
                     <div>
-                      <h2>{num}</h2>
+                      <h3 className="mr-3 ml-3">Num. {num}</h3>
                     </div>
                   )}
                 </div>
                 <div className="d-flex">
                   {suffledNums.map(snum => 
                     <div>
-                      <div className="m-2">
+                      <div className="m-3">
                       <Flippy
                         flipOnHover={false}
                         flipOnClick={true} 
@@ -177,8 +179,9 @@ const ResultPage = ({ match }) => {
                         style={{
                           backgroundColor: '#41669d',
                         }}
+                        className="m-0 p-0"
                       >
-                        
+                        <img className="card-img m-0 p-0" src={cardImg} alt="card"/>
                       </FrontSide>
                       <BackSide
                         style={{ backgroundColor: '#175852'}}>
@@ -189,7 +192,6 @@ const ResultPage = ({ match }) => {
                     </div>
                   )}
                 </div>
-                <h3>셔플: {suffledNums}</h3>
                 {suffledNums &&
                   <div>
                     <Button onClick={initSuffledNums} className="" variant="dark">다시</Button>
