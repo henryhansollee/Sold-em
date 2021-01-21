@@ -19,7 +19,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // SCSS
 import './ResultPage.scss';
-import { ThemeProvider } from 'react-bootstrap';
 
 import cardImg from '../assets/images/card.jpg';
 import cardImgBack from '../assets/images/back.png';
