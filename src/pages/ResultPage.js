@@ -21,7 +21,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './ResultPage.scss';
 import { ThemeProvider } from 'react-bootstrap';
 
-import cardImg from '../assets/images/card.jpg'
+import cardImg from '../assets/images/card.jpg';
+import cardImgBack from '../assets/images/back.png';
 
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 
@@ -97,48 +98,14 @@ const ResultPage = ({ match }) => {
           <ReactFullpage.Wrapper>
             <div className="section main-page">
               <div className="d-flex flex-column align-items-center">
-                <h2>총 {match.params.teamNums}팀</h2>
+                <h2 className="result-title">총 {match.params.teamNums}팀</h2>
                 <div className="d-flex">
-                  {nums.map(num => 
-                    <div>
-                      <h2>{num}</h2>
-                      <div className="m-2">
-                      <Flippy
-                        flipOnHover={false}
-                        flipOnClick={true} 
-                        flipDirection="horizontal" 
-                        style={{ width: '100px', height: '150px' }}
-                      >
-                      <FrontSide
-                        style={{
-                          backgroundColor: '#41669d',
-                        }}
-                      >
-                        RICK
-                      </FrontSide>
-                      <BackSide
-                        style={{ backgroundColor: '#175852'}}>
-                        ROCKS
-                      </BackSide>
-                    </Flippy>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                <h3>셔플: {suffledNums}</h3>
-                {suffledNums &&
-                  <div>
-                    <Button onClick={initSuffledNums} className="" variant="dark">다시</Button>
-                    <Confetti
-                      width={width}
-                      height={height}
-                    />
-                  </div>
-                }
                 {!suffledNums &&
-                  <Button onClick={suffling} className="" variant="dark">셔플</Button>
+                  <Button onClick={suffling} className="result-button" variant="dark">섞어버려</Button>
                 }
-                <Link className="btn btn-light" to="/">처음으로</Link>
+                <Link className="btn btn-light result-button" to="/">처음으로</Link>
+                </div>
+
               </div>
             </div>
           </ReactFullpage.Wrapper>
@@ -157,11 +124,11 @@ const ResultPage = ({ match }) => {
           <ReactFullpage.Wrapper>
             <div className="section main-page">
               <div className="d-flex flex-column align-items-center">
-                <h2>총 {match.params.teamNums}팀</h2>
+                <h2 className="result-title">총 {match.params.teamNums}팀</h2>
                 <div className="d-flex">
                   {nums.map(num => 
                     <div>
-                      <h3 className="mr-3 ml-3">Num. {num}</h3>
+                      <h3 className="mr-5 ml-3 result-standard">Num. {num}</h3>
                     </div>
                   )}
                 </div>
@@ -176,15 +143,14 @@ const ResultPage = ({ match }) => {
                         style={{ width: '100px', height: '150px' }}
                       >
                       <FrontSide
-                        style={{
-                          backgroundColor: '#41669d',
-                        }}
                         className="m-0 p-0"
                       >
                         <img className="card-img m-0 p-0" src={cardImg} alt="card"/>
                       </FrontSide>
                       <BackSide
-                        style={{ backgroundColor: '#175852'}}>
+                        className="result-order text-center"
+                        style={{ backgroundColor: '#FFFFF2'}}>
+                          <img className="back-img mb-3" src={cardImgBack} alt="back" />
                         {snum} 팀
                       </BackSide>
                     </Flippy>
@@ -192,19 +158,18 @@ const ResultPage = ({ match }) => {
                     </div>
                   )}
                 </div>
-                {suffledNums &&
-                  <div>
-                    <Button onClick={initSuffledNums} className="" variant="dark">다시</Button>
-                    <Confetti
-                      width={width}
-                      height={height}
-                    />
-                  </div>
-                }
-                {!suffledNums &&
-                  <Button onClick={suffling} className="" variant="dark">셔플</Button>
-                }
-                <Link className="btn btn-light" to="/">처음으로</Link>
+                <div className="d-flex">
+                  {suffledNums &&
+                    <div>
+                      <Button onClick={initSuffledNums} className="result-button" variant="dark">다시하기</Button>
+                      <Confetti
+                        width={width}
+                        height={height}
+                      />
+                    </div>
+                  }
+                  <Link className="btn btn-light result-button" to="/">처음으로</Link>
+                </div>
               </div>
             </div>
           </ReactFullpage.Wrapper>

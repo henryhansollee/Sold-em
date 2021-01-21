@@ -37,8 +37,12 @@ const MainPage = () => {
     setTeams(e.target.value)
   };
   const sendData = () => {
-    console.log(teams);
-    history.push(`/result/${teams}`)
+    if (teams) {
+      history.push(`/result/${teams}`)
+    }
+    else {
+      alert('팀 수를 입력해주세요 :)')
+    }
   };
 
   return (
@@ -75,7 +79,7 @@ const MainPage = () => {
                       <img src={main3} alt="main3" className="modal-img" />
                     </div>
                     <h1 className="modal-h1 text-center">싸피솔덤</h1>
-                    <Form.Control className="w-75 modal-input" placeholder="발표하는 팀의 수를 입력하세요! (숫자만)" teams={teams} onChange={setTeamsNums} />
+                    <Form.Control className="w-75 modal-input" placeholder="팀 수를 입력하세요! (숫자만)" teams={teams} onChange={setTeamsNums} />
                     <Button className="mt-3 mb-4 modal-button" variant="warning" onClick={sendData}>결과보기</Button>
                   </div>
                 </Modal.Body>
