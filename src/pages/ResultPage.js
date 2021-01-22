@@ -127,14 +127,14 @@ const ResultPage = ({ match }) => {
                 <div className="d-flex">
                   {nums.map(num => 
                     <div>
-                      <h3 className="mr-5 ml-3 result-standard">Num. {num}</h3>
+                      <h3 className="ml-4 mr-5 result-standard">순서 {num}</h3>
                     </div>
                   )}
                 </div>
                 <div className="d-flex">
                   {suffledNums.map(snum => 
                     <div>
-                      <div className="m-3">
+                      <div className="m-2">
                       <Flippy
                         flipOnHover={false}
                         flipOnClick={true} 
