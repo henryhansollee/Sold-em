@@ -159,7 +159,7 @@ const ResultPage = ({ match }) => {
                 </div>
                 <div className="d-flex">
                   {suffledNums &&
-                    <div>
+                    <div className="mt-3">
                       <Button onClick={initSuffledNums} className="result-button" variant="dark">다시하기</Button>
                       <Confetti
                         width={width}
@@ -167,7 +167,7 @@ const ResultPage = ({ match }) => {
                       />
                     </div>
                   }
-                  <Link className="btn btn-light result-button" to="/">처음으로</Link>
+                  <Link className="btn btn-light result-button mt-3" to="/">처음으로</Link>
                 </div>
               </div>
             </div>
