@@ -67,9 +67,12 @@ const MainPage = () => {
                   <img src={main3} alt="main3" className="main-img" />
                 </div>
                 <h1 className="main-h1">싸피솔덤</h1>
-                <Button className="main-button" variant="dark" onClick={handleShow}>
-                  시작하기
-                </Button>
+                <div className="d-flex">
+                  <Button className="main-button mr-1" variant="dark" onClick={handleShow}>
+                    시작하기
+                  </Button>
+                  <Button href="https://wonderful-hypatia-77ee62.netlify.app" className="main-button" variant="success">싸피룰렛</Button>
+                </div>
               </div>
 
               <Modal centered show={show} onHide={handleClose}>
