@@ -38,7 +38,11 @@ const MainPage = () => {
   };
   const sendData = () => {
     if (teams) {
-      history.push(`/result/${teams}`)
+      if (!isNaN(teams)) {
+        history.push(`/result/${teams}`)
+      } else {
+        alert('숫자만 입력해주세요 :)')
+      }
     }
     else {
       alert('팀 수를 입력해주세요 :)')
