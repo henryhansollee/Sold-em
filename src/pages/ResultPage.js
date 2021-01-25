@@ -100,7 +100,7 @@ const ResultPage = ({ match }) => {
                 <h2 className="result-title">총 {match.params.teamNums}팀</h2>
                 <div className="d-flex">
                 {!suffledNums &&
-                  <Button onClick={suffling} className="result-button" variant="dark">섞어버려</Button>
+                  <Button onClick={suffling} className="result-button mr-1" variant="dark">섞어버려</Button>
                 }
                 <Link className="btn btn-light result-button" to="/">처음으로</Link>
                 </div>
@@ -160,7 +160,7 @@ const ResultPage = ({ match }) => {
                 <div className="d-flex">
                   {suffledNums &&
                     <div className="mt-3">
-                      <Button onClick={initSuffledNums} className="result-button" variant="dark">다시하기</Button>
+                      <Button onClick={initSuffledNums} className="result-button mr-1" variant="dark">다시하기</Button>
                       <Confetti
                         width={width}
                         height={height}
