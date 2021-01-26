@@ -10,9 +10,6 @@ import { useWindowSize } from 'react-use'
 // CONFETTI
 import Confetti from 'react-confetti'
 
-// FULLPAGE
-import ReactFullpage from '@fullpage/react-fullpage';
-
 // BOOTSTRAP
 import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -89,92 +86,72 @@ const ResultPage = ({ match }) => {
   };
   if (!suffledNums) {
     return (
-      <ReactFullpage
-      licenseKey = {'YOUR_KEY_HERE'}
-      scrollingSpeed = {1000}
-      render={({ state, fullpageApi }) => {
-        return (
-          <ReactFullpage.Wrapper>
-            <div className="section main-page">
-              <div className="d-flex flex-column align-items-center">
-                <h2 className="result-title">총 {match.params.teamNums}팀</h2>
-                <div className="d-flex">
-                {!suffledNums &&
-                  <Button onClick={suffling} className="result-button mr-1" variant="dark">섞어버려</Button>
-                }
-                <Link className="btn btn-light result-button" to="/">처음으로</Link>
-                </div>
+      <div className="section result-page">
+        <div className="d-flex flex-column align-items-center">
+          <h2 className="result-title">총 {match.params.teamNums}팀</h2>
+          <div className="d-flex">
+          {!suffledNums &&
+            <Button onClick={suffling} className="result-button mr-1" variant="dark">섞어버려</Button>
+          }
+          <Link className="btn btn-light result-button" to="/">처음으로</Link>
+          </div>
 
-              </div>
-            </div>
-          </ReactFullpage.Wrapper>
-        );
-      }}
-    />
+        </div>
+      </div>
     );
   };
 
   return (
-    <ReactFullpage
-      licenseKey = {'YOUR_KEY_HERE'}
-      scrollingSpeed = {1000}
-      render={({ state, fullpageApi }) => {
-        return (
-          <ReactFullpage.Wrapper>
-            <div className="section main-page">
-              <div className="d-flex flex-column align-items-center">
-                <h2 className="result-title">총 {match.params.teamNums}팀</h2>
-                <div className="d-flex">
-                  {nums.map(num => 
-                    <div>
-                      <h3 className="ml-4 mr-5 result-standard">순서 {num}</h3>
-                    </div>
-                  )}
-                </div>
-                <div className="d-flex">
-                  {suffledNums.map(snum => 
-                    <div>
-                      <div className="m-2">
-                      <Flippy
-                        flipOnHover={false}
-                        flipOnClick={true} 
-                        flipDirection="horizontal" 
-                        style={{ width: '100px', height: '150px' }}
-                      >
-                      <FrontSide
-                        className="m-0 p-0"
-                      >
-                        <img className="card-img m-0 p-0" src={cardImg} alt="card"/>
-                      </FrontSide>
-                      <BackSide
-                        className="result-order text-center"
-                        style={{ backgroundColor: '#FFFFF2'}}>
-                          <img className="back-img mb-3" src={cardImgBack} alt="back" />
-                        {snum} 팀
-                      </BackSide>
-                    </Flippy>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                <div className="d-flex">
-                  {suffledNums &&
-                    <div className="mt-3">
-                      <Button onClick={initSuffledNums} className="result-button mr-1" variant="dark">다시하기</Button>
-                      <Confetti
-                        width={width}
-                        height={height}
-                      />
-                    </div>
-                  }
-                  <Link className="btn btn-light result-button mt-3" to="/">처음으로</Link>
-                </div>
+    <div className="section card-page">
+      <div className="d-flex flex-column align-items-center">
+        <h2 className="result-title">총 {match.params.teamNums}팀</h2>
+        <div className="d-flex">
+          {nums.map(num => 
+            <div>
+              <h3 className="ml-4 mr-5 result-standard">순서 {num}</h3>
+            </div>
+          )}
+        </div>
+        <div className="d-flex">
+          {suffledNums.map(snum => 
+            <div>
+              <div className="m-2">
+              <Flippy
+                flipOnHover={false}
+                flipOnClick={true} 
+                flipDirection="horizontal" 
+                style={{ width: '100px', height: '150px' }}
+              >
+              <FrontSide
+                className="m-0 p-0"
+              >
+                <img className="card-img m-0 p-0" src={cardImg} alt="card"/>
+              </FrontSide>
+              <BackSide
+                className="result-order text-center"
+                style={{ backgroundColor: '#FFFFF2'}}>
+                  <img className="back-img mb-3" src={cardImgBack} alt="back" />
+                {snum} 팀
+              </BackSide>
+            </Flippy>
               </div>
             </div>
-          </ReactFullpage.Wrapper>
-        );
-      }}
-    />
+          )}
+        </div>
+        <div className="d-flex">
+          {suffledNums &&
+            <div className="mt-3">
+              <Button onClick={initSuffledNums} className="result-button mr-1" variant="dark">다시하기</Button>
+              <Confetti
+                width={width}
+                height={height}
+              />
+            </div>
+          }
+          <Link className="btn btn-light result-button mt-3" to="/">처음으로</Link>
+        </div>
+      </div>
+    </div>
   );
 };
 
