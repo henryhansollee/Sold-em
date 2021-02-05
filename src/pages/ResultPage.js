@@ -31,7 +31,7 @@ const ResultPage = ({ match }) => {
   const { width, height } = useWindowSize()
 
   const [ standardNums, setStandardNums ] = useState('');
-  const [ suffledNums, setSuffledNums ] = useState('');
+  const [ shuffledNums, setShuffledNums ] = useState('');
   
   const [ nums, setNums ] = useState('');
   const [ loading ] = useState(false);
@@ -59,17 +59,17 @@ const ResultPage = ({ match }) => {
 
 
 
-  const suffling = () => {
-    if (!suffledNums) {
+  const shuffling = () => {
+    if (!shuffledNums) {
       const resultArray = _.shuffle(standardNums);
-      setSuffledNums(resultArray)
+      setShuffledNums(resultArray)
     } else {
       history.push(`/result/${match.params.teamNums}`)
     }
   }
 
-  const initSuffledNums = () => {
-    setSuffledNums('')
+  const initShuffledNums = () => {
+    setShuffledNums('')
     history.push(`/result/${match.params.teamNums}`)
   }
 
@@ -83,14 +83,14 @@ const ResultPage = ({ match }) => {
       </div>
     );
   };
-  if (!suffledNums) {
+  if (!shuffledNums) {
     return (
       <div className="section result-page">
         <div className="d-flex flex-column align-items-center">
           <h2 className="result-title">총 {match.params.teamNums}팀</h2>
           <div className="d-flex">
-          {!suffledNums &&
-            <Button onClick={suffling} className="result-button mr-1" variant="dark">섞어버려</Button>
+          {!shuffledNums &&
+            <Button onClick={shuffling} className="result-button mr-1" variant="dark">섞어버려</Button>
           }
           <Link className="btn btn-light result-button" to="/">처음으로</Link>
           </div>
@@ -112,7 +112,7 @@ const ResultPage = ({ match }) => {
           )}
         </div>
         <div className="d-flex">
-          {suffledNums.map(snum => 
+          {shuffledNums.map(snum => 
             <div>
               <div className="m-2">
               <Flippy
@@ -138,9 +138,9 @@ const ResultPage = ({ match }) => {
           )}
         </div>
         <div className="d-flex">
-          {suffledNums &&
+          {shuffledNums &&
             <div className="mt-3">
-              <Button onClick={initSuffledNums} className="result-button mr-1" variant="dark">다시하기</Button>
+              <Button onClick={initShuffledNums} className="result-button mr-1" variant="dark">다시하기</Button>
               <Confetti
                 width={width}
                 height={height}
