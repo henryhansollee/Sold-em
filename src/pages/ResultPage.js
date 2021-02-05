@@ -22,6 +22,8 @@ import cardImgBack from '../assets/images/back.png';
 
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 
+import _ from "lodash";
+
 const ResultPage = ({ match }) => {
   // HISTORY
   const history = useHistory();
@@ -59,11 +61,8 @@ const ResultPage = ({ match }) => {
 
   const suffling = () => {
     if (!suffledNums) {
-      for (var i = 0; i < standardNums.length; i++) {
-        var j = Math.floor(Math.random() * (i + 1));
-        [standardNums[i], standardNums[j]] = [standardNums[j], standardNums[i]];
-        setSuffledNums(standardNums)
-      }
+      const resultArray = _.shuffle(standardNums);
+      setSuffledNums(resultArray)
     } else {
       history.push(`/result/${match.params.teamNums}`)
     }
